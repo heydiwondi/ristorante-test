@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ristorante Rosso Cenere</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-image: url('images/assisi-header.jpg'); /* Immagine di Assisi */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin: 10px 0 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #800000;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            color: #800000;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .home-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        /* Nascondi il menu inizialmente */
+        #menu {
+            display: none;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .menu-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .menu-item img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .menu-item h3 {
+            color: #800000;
+            margin: 10px 0 5px;
+        }
+        footer {
+            background-color: #800000;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Ristorante Rosso Cenere</h1>
+    <p>Tra i sapori di Norcia e la bellezza di Assisi</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="menu.html" id="toggle-menu">Vedi il Menù</a> <!-- Pulsante per aprire il menù -->
+    <a href="contatti.html">Preventivo eventi</a>
+</nav>
+
+<main class="container">
+    <!-- Sezione Home -->
+    <section id="home" class="section home-content">
+        <h2>Benvenuti al Ristorante Rosso Cenere</h2>
+        <p>Immerso nella natura di Assisi, il nostro ristorante offre un’esperienza culinaria unica, celebrando i sapori autentici dell’Umbria. Dai tartufi pregiati ai salumi di Norcia, ogni piatto è un omaggio alla tradizione e alla qualità.</p>
+        <img src="images/assisi-natura.jpg" alt="Paesaggio di Assisi" style="width:100%; border-radius: 8px; margin-top: 20px;"> <!-- Immagine della natura di Assisi -->
+    </section>
+
+    <!-- Sezione Menù (Nascosta inizialmente) -->
+    <section id="menu" class="section">
+        <h2>Il Nostro Menù</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="images/tagliatelle-tartufo.jpg" alt="Tagliatelle al Tartufo"> <!-- Immagine di tagliatelle al tartufo -->
+                <h3>Tagliatelle al Tartufo</h3>
+                <p>Un classico umbro con tartufo nero fresco.</p>
+            </div>
+            <div class="menu-item">
+                <img src="images/salumi-norcia.jpg" alt="Salumi di Norcia"> <!-- Immagine di salumi di Norcia -->
+                <h3>Salumi di Norcia</h3>
+                <p>Una selezione dei migliori salumi locali.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Contatti -->
+    <section id="contatti" class="section">
+        <h2>Contatti</h2>
+        <p><strong>Indirizzo:</strong> Via della Natura, Assisi (PG), Italia</p>
+        <p><strong>Telefono:</strong> +39 123 456 789</p>
+        <p><strong>Email:</strong> info@rossocenere.com</p>
+        <p><strong>Orari:</strong> Lunedì - Domenica: 12:00 - 22:00</p>
+    </section>
+</main>
+
+<footer>
+    <p>© 2024 Ristorante Rosso Cenere - Assisi, Italia</p>
+</footer>
+
+<!-- JavaScript per aprire/chiudere il menù -->
+<script>
+    document.getElementById('toggle-menu').addEventListener('click', function() {
+        var menuSection = document.getElementById('menu');
+        if (menuSection.style.display === 'none' || menuSection.style.display === '') {
+            menuSection.style.display = 'block';
+        } else {
+            menuSection.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti - Ristorante Rosso Cenere</title>
+    <style>
+        /* Stili generali per il corpo */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Header - Titolo del ristorante */
+        header {
+            background-image: url('images/assisi-header.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin: 10px 0 0;
+        }
+
+        /* Menu di navigazione */
+         nav {
+            display: flex;
+            justify-content: center;
+            background-color: #800000;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main content */
+        main {
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #800000; /* Rosso del ristorante */
+        }
+
+        /* Form */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select, input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #800000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #d10000;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+		
+		     footer {
+            background-color: #800000;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Header e nome del ristorante -->
+<header>
+    <h1>Ristorante Rosso Cenere</h1>
+</header>
+
+<!-- Menu di navigazione -->
+<nav>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menù</a>
+    <a href="preventivo_eventi.html">Preventivo eventi</a>
+</nav>
+
+<!-- Corpo principale -->
+<main>
+    <h2>Modulo di Richiesta Preventivo</h2>
+    <form id="contactForm">
+        <div class="form-group">
+            <label for="eventType">Tipo di Evento:</label>
+            <select id="eventType" name="eventType" required>
+                <option value="battesimo">Battesimo</option>
+                <option value="matrimonio">Matrimonio</option>
+                <option value="comunione">Comunione</option>
+                <option value="cresima">Cresima</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="numPeople">Numero di Persone:</label>
+            <select id="numPeople" name="numPeople" required>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="150">150</option>
+                <option value="200">200</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="numCourses">Numero di Portate:</label>
+            <select id="numCourses" name="numCourses" required>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="eventDate">Data dell'Evento:</label>
+            <input type="date" id="eventDate" name="eventDate" required>
+        </div>
+
+        <button type="button" onclick="calculatePrice()">Calcola Preventivo</button>
+    </form>
+
+    <div id="result" class="result"></div>
+	
+	
+	   <section id="contatti" class="section">
+        <h2>Contatti</h2>
+        <p><strong>Indirizzo:</strong> Via della Natura, Assisi (PG), Italia</p>
+        <p><strong>Telefono:</strong> +39 123 456 789</p>
+        <p><strong>Email:</strong> info@rossocenere.com</p>
+        <p><strong>Orari:</strong> Lunedì - Domenica: 12:00 - 22:00</p>
+    </section>
+	
+</main>
+
+<footer>
+    <p>© 2024 Ristorante Rosso Cenere - Assisi, Italia</p>
+</footer>
+
+
+<!-- Script per calcolare il preventivo -->
+<script>
+    function calculatePrice() {
+        var eventType = document.getElementById("eventType").value;
+        var numPeople = parseInt(document.getElementById("numPeople").value);
+        var numCourses = parseInt(document.getElementById("numCourses").value);
+        var eventDate = new Date(document.getElementById("eventDate").value);
+
+        var basePrices = {
+            "battesimo": 30,
+            "matrimonio": 50,
+            "comunione": 40,
+            "cresima": 35
+        };
+
+        var basePrice = basePrices[eventType];
+        var pricePerCourse = 10;
+        var pricePerPerson = 15;
+
+        var totalPrice = (basePrice + (numCourses * pricePerCourse) + (numPeople * pricePerPerson));
+
+        if (eventDate.getDay() === 0 || eventDate.getDay() === 6) {
+            totalPrice *= 1.2;
+        }
+
+        var resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = "Il preventivo per il tuo evento è di €" + totalPrice.toFixed(2);
+    }
+</script>
+
+
+</body>
+</html>

@@ -30,10 +30,19 @@
             background-color: #f1b86a;
             border-color: #f1b86a;
         }
+        #resultContainer {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        #resultContainer img {
+            width: 150px;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div id="container" class="container">
         <h1 class="text-center">Calcola il tuo Preventivo</h1>
         <form id="quoteForm">
             <div class="mb-3">
@@ -42,7 +51,7 @@
             </div>
             <div class="mb-3">
                 <label for="participants" class="form-label">Numero di partecipanti</label>
-                <input type="number" id="participants" class="form-control" min="1" required>
+                <input type="number" id="participants" class="form-control" min="5" required>
             </div>
             <div class="mb-3">
                 <label for="courses" class="form-label">Numero di portate</label>
@@ -71,26 +80,99 @@
             <div class="mb-3">
                 <label for="contactPreference" class="form-label">Modalità di contatto</label>
                 <select id="contactPreference" class="form-select" required>
-					<option value="none">Scegli come vuoi essere contattato</option>
                     <option value="none">Non voglio essere contattato</option>
                     <option value="email">Email</option>
                     <option value="phone">Telefonata</option>
                 </select>
             </div>
-            <button type="button" id="submitBtn" class="btn btn-primary w-100">Calcola Preventivo</button>
-
+            <button type="button" id="submitBtn" class="btn btn-primary w-100">Invia Preventivo</button>
         </form>
-        <p id="result" class="mt-3 text-center" style="display: none;"></p>
-		<div id="resultContainer" style="display: none; text-align: center; margin-top: 20px;">
-			<p id="resultText" class="lead"></p>
-			<img src="logo.png" alt="Logo Rosso Cenere" style="width: 150px; margin: 20px 0;">
-			<a href="index.html" class="btn btn-outline-light">Torna al sito web</a>
-		</div>
 
+        <!-- Risultato del Preventivo -->
+        <div id="resultContainer">
+            <p id="resultText" class="lead"></p>
+            <img src="logo_modulo.jpg" alt="Logo Rosso Cenere">
+          <!--  <a href="index.html" class="btn btn-outline-light">Torna al sito web</a> -->
+        </div>
     </div>
-	
-	
 
-    <script src="script.js"></script>
+    <script>
+   document.getElementById('submitBtn').addEventListener('click', function () {
+    // Raccogli i dati del modulo
+    const eventDate = document.getElementById('eventDate').value;
+    const participants = parseInt(document.getElementById('participants').value, 10);
+    const courses = parseInt(document.getElementById('courses').value, 10);
+    const eventType = document.getElementById('eventType').value;
+    const contactPreference = document.getElementById('contactPreference').value;
+
+    // Verifica se i valori sono validi
+    if (!eventDate || isNaN(participants) || participants < 5 || isNaN(courses) || courses < 4 || courses > 20) {
+        alert("Per favore, inserisci almeno 5 partecipanti e compila correttamente tutti i campi.");
+        return; // Interrompe l'invio del modulo se i dati sono errati
+    }
+
+    // Calcolo del preventivo
+    let basePrice = 50; // Prezzo base per partecipante
+    let eventMultiplier = 1;
+
+    switch (eventType) {
+        case 'matrimonio':
+            eventMultiplier = 1.5;
+            break;
+        case 'battesimo':
+        case 'comunione':
+            eventMultiplier = 1.2;
+            break;
+        case 'cresima':
+        case 'festa privata':
+        case 'compleanno':
+            eventMultiplier = 1.1;
+            break;
+        default:
+            eventMultiplier = 1;
+    }
+
+    const isWeekend = ['Saturday', 'Sunday'].includes(new Date(eventDate).toLocaleDateString('en-US', { weekday: 'long' }));
+    const weekendMultiplier = isWeekend ? 1.2 : 1;
+
+    const price = participants * courses * basePrice * eventMultiplier * weekendMultiplier;
+
+    // Verifica se il prezzo calcolato è valido
+    if (price <= 0 || isNaN(price)) {
+        alert("Si è verificato un errore nel calcolo del preventivo. Riprova.");
+        return;
+    }
+
+    // Nascondi il modulo e mostra il risultato
+    document.getElementById('quoteForm').style.display = 'none';
+    const resultContainer = document.getElementById('resultContainer');
+    const resultText = document.getElementById('resultText');
+    resultText.innerHTML = `Il costo stimato per il tuo evento è: <strong>€${price.toFixed(2)}</strong>`;
+
+    if (contactPreference === 'email' || contactPreference === 'phone') {
+        resultText.innerHTML += '<br>Verrai ricontattato al più presto.';
+		resultText.innerHTML += '<br>Grazie per aver scelto <strong>Rosso Cenere</strong>.';
+    }
+
+    resultContainer.style.display = 'block';
+
+    // Cambia il titolo in "Il tuo preventivo"
+    document.querySelector('h1').textContent = 'Il Tuo Preventivo';
+	
+	document.body.style.backgroundImage = "url('Ristorante-Quattro-Sensi-2.webp')";
+	document.body.style.backgroundSize = "cover"; // Fa sì che l'immagine copra tutta la pagina
+	document.body.style.backgroundPosition = "center"; // Centra l'immagine nella finestra
+	document.body.style.backgroundRepeat = "no-repeat"; // Impedisce che l'immagine venga ripetuta
+	document.body.style.backgroundAttachment = "fixed"; // L'immagine rimane fissa mentre si scorre la pagina
+	
+	var Container = document.getElementById('container');
+	Container.style.backgroundColor = "#333333d4";
+
+});
+
+
+
+
+    </script>
 </body>
 </html>

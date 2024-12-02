@@ -6,8 +6,14 @@ document.getElementById('submitBtn').addEventListener('click', function () {
     const eventType = document.getElementById('eventType').value;
     const contactPreference = document.getElementById('contactPreference').value;
 
-    // Regole per il calcolo del preventivo
-    let basePrice = 50; // Prezzo base per partecipante
+    // Verifica se i valori sono validi
+    if (!eventDate || isNaN(participants) || participants <= 0 || isNaN(courses) || courses < 4 || courses > 20) {
+        alert("Per favore, compila tutti i campi correttamente.");
+        return; // Interrompe l'invio del modulo se i dati sono errati
+    }
+
+    // Calcolo del preventivo
+    let basePrice = 50;
     let eventMultiplier = 1;
 
     switch (eventType) {
@@ -32,10 +38,14 @@ document.getElementById('submitBtn').addEventListener('click', function () {
 
     const price = participants * courses * basePrice * eventMultiplier * weekendMultiplier;
 
-    // Nascondi il form
-    document.getElementById('quoteForm').style.display = 'none';
+    // Verifica se il prezzo calcolato è valido
+    if (price <= 0 || isNaN(price)) {
+        alert("Si è verificato un errore nel calcolo del preventivo. Riprova.");
+        return;
+    }
 
-    // Mostra il risultato
+    // Nascondi il modulo e mostra il risultato
+    document.getElementById('quoteForm').style.display = 'none';
     const resultContainer = document.getElementById('resultContainer');
     const resultText = document.getElementById('resultText');
     resultText.innerHTML = `Il costo stimato per il tuo evento è: <strong>€${price.toFixed(2)}</strong>`;

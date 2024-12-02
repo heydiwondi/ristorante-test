@@ -283,4 +283,43 @@ body {
 }
 
 
+#design-works h2 {
+    color: #e1a05a;
+    font-size: 2rem;
+}
 
+#design-works p {
+    font-size: 1rem;
+    color: #f8f8f0;
+}
+
+#design-works .btn-outline-light {
+    border: 2px solid #e1a05a;
+    color: #e1a05a;
+}
+
+#design-works .btn-outline-light:hover {
+    background-color: #e1a05a;
+    color: #2a2c2b;
+}
+
+#design-works .row {
+    display: flex;
+    flex-wrap: wrap; /* Gestisce la disposizione su schermi più piccoli */
+    gap: 20px; /* Spaziatura tra gli elementi */
+}
+
+#design-works .col-lg-6 {
+    flex: 1 1 100%; /* Larghezza al 100% sui dispositivi mobili */
+}
+
+@media (min-width: 992px) {
+    #design-works .col-lg-6 {
+        flex: 1 1 50%; /* Larghezza al 50% su desktop */
+    }
+}
+
+#design-works img {
+    max-width: 100%; /* Assicura che l'immagine non esca dal contenitore */
+    height: auto; /* Mantiene le proporzioni */
+}

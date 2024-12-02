@@ -323,3 +323,45 @@ body {
     max-width: 100%; /* Assicura che l'immagine non esca dal contenitore */
     height: auto; /* Mantiene le proporzioni */
 }
+
+#private-events h2 {
+    color: #e1a05a;
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+#private-events p {
+    font-size: 1rem;
+    color: #f8f8f0;
+    line-height: 1.8;
+}
+
+#private-events .btn-outline-light {
+    border: 2px solid #e1a05a;
+    color: #e1a05a;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+#private-events .btn-outline-light:hover {
+    background-color: #e1a05a;
+    color: #2a2c2b;
+}
+
+#private-events img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 992px) {
+    #private-events .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #private-events .col-lg-6 {
+        margin-bottom: 20px;
+    }
+}

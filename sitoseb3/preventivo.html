@@ -112,6 +112,14 @@
                     <option value="telefonata">Telefonata</option>
                 </select>
             </div>
+			
+			<div class="mb-3">
+			<input type="checkbox" id="consent" required>
+			<label for="consent">
+				Acconsento al trattamento dei miei dati personali secondo la <a href="privacypolicy.html" target="_blank">Privacy Policy</a>.
+			</label>
+			</div>
+			
             <button type="button" id="submitBtn" class="btn btn-primary w-100">Invia Preventivo</button>
         </form>
 
@@ -133,6 +141,12 @@
     const contactPreference = document.getElementById('contactPreference').value;
 	const email = document.getElementById('email').value;
     const phone = document.getElementById('telefonata').value;
+	const consent = document.getElementById('consent').checked;
+
+    if (!consent) {
+        alert("Devi accettare il trattamento dei dati personali per richiedere il preventivo.");
+        return;
+    }
 	
     // Verifica se i valori sono validi
     if (!eventDate || isNaN(participants) || participants < 5 || isNaN(courses) || courses < 4 || courses > 20) {

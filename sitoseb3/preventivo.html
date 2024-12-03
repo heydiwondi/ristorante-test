@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+	<script>
+	  (function(){
+		emailjs.init("DH8B-clxSs9OFRpFx"); // public key
+	  })();
+	</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calcola Preventivo Online</title>
@@ -11,14 +18,34 @@
             color: #f8f8f0;
             font-family: Arial, sans-serif;
         }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #333;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
+		.container {
+			max-width: 600px;
+			margin: 50px auto;
+			padding: 20px;
+			background: #333;
+			border-radius: 8px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+			transition: max-width 0.3s ease; /* Transizione per rendere il cambiamento fluido */
+		}
+
+		.container-result {
+			/* Riduci la larghezza del contenitore in base alle dimensioni dello schermo */
+			max-width: 75%; /* Adatta automaticamente al 75% della larghezza del dispositivo */
+		}
+
+		/* Media query per schermi più piccoli */
+		@media (max-width: 768px) {
+			.container-result {
+				max-width: 85%; /* Aumenta leggermente la larghezza per schermi medi */
+			}
+		}
+
+		/* Media query per schermi molto piccoli */
+		@media (max-width: 480px) {
+			.container-result {
+				max-width: 90%; /* Ancora più spazio per schermi piccoli */
+			}
+		}
         h1 {
             color: #e1a05a;
         }
@@ -74,15 +101,15 @@
                 <input type="email" id="email" class="form-control" required>
             </div>
             <div class="mb-3">
-                <label for="phone" class="form-label">Numero di telefono</label>
-                <input type="tel" id="phone" class="form-control">
+                <label for="telefonata" class="form-label">Numero di telefono</label>
+                <input type="tel" id="telefonata" class="form-control">
             </div>
             <div class="mb-3">
                 <label for="contactPreference" class="form-label">Modalità di contatto</label>
                 <select id="contactPreference" class="form-select" required>
                     <option value="none">Non voglio essere contattato</option>
                     <option value="email">Email</option>
-                    <option value="phone">Telefonata</option>
+                    <option value="telefonata">Telefonata</option>
                 </select>
             </div>
             <button type="button" id="submitBtn" class="btn btn-primary w-100">Invia Preventivo</button>
@@ -104,12 +131,15 @@
     const courses = parseInt(document.getElementById('courses').value, 10);
     const eventType = document.getElementById('eventType').value;
     const contactPreference = document.getElementById('contactPreference').value;
-
+	const email = document.getElementById('email').value;
+    const phone = document.getElementById('telefonata').value;
+	
     // Verifica se i valori sono validi
     if (!eventDate || isNaN(participants) || participants < 5 || isNaN(courses) || courses < 4 || courses > 20) {
         alert("Per favore, inserisci almeno 5 partecipanti e compila correttamente tutti i campi.");
         return; // Interrompe l'invio del modulo se i dati sono errati
     }
+
 
     // Calcolo del preventivo
     let basePrice = 50; // Prezzo base per partecipante
@@ -142,6 +172,28 @@
         alert("Si è verificato un errore nel calcolo del preventivo. Riprova.");
         return;
     }
+	
+	 // Invia l'email con EmailJS
+    const templateParams = {
+        eventType,
+        eventDate,
+        participants,
+        courses,
+        contactPreference,
+        email,
+        phone,
+		price
+    };
+	
+	emailjs.send("service_s509dyk", "template_eyb4zav", templateParams)
+	.then(function(response) {
+		console.log("SUCCESS!", response.status, response.text);
+		//alert("Il tuo preventivo è stato inviato con successo!");
+	}, function(error) {
+		console.error("FAILED...", error);
+		alert("Si è verificato un errore durante l'invio del preventivo.");
+	});
+	
 
     // Nascondi il modulo e mostra il risultato
     document.getElementById('quoteForm').style.display = 'none';
@@ -167,6 +219,7 @@
 	
 	var Container = document.getElementById('container');
 	Container.style.backgroundColor = "#333333d4";
+	document.querySelector('.container').classList.add('container-result');
 
 });
 

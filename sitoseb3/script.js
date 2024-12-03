@@ -55,4 +55,6 @@ document.getElementById('submitBtn').addEventListener('click', function () {
     }
 
     resultContainer.style.display = 'block';
+	 // Aggiungi la classe "container-result" al contenitore
+    document.querySelector('.container').classList.add('container-result');
 });

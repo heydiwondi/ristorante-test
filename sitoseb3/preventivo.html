@@ -163,7 +163,7 @@
    document.getElementById('submitBtn').addEventListener('click', function () {
     // Raccogli i dati del modulo
     const eventDate = document.getElementById('eventDate').value;
-    const participants = parseInt(document.getElementById('participants').value, 10);
+    var participants = parseInt(document.getElementById('participants').value, 10);
     const courses = parseInt(document.getElementById('courses').value, 10);
     const eventType = document.getElementById('eventType').value;
     const contactPreference = document.getElementById('contactPreference').value;
@@ -181,7 +181,9 @@
     //    alert("Per favore, inserisci almeno 5 partecipanti e compila correttamente tutti i campi.");
     //    return; // Interrompe l'invio del modulo se i dati sono errati
    // }
-
+   
+   participants = 1; //Messo per stampare il prezzo a persona
+	
 
     // Calcolo del preventivo
     // let basePrice = 50; // Prezzo base per partecipante
@@ -207,7 +209,7 @@
     const isWeekend = ['Saturday', 'Sunday'].includes(new Date(eventDate).toLocaleDateString('en-US', { weekday: 'long' }));
     const weekendMultiplier = isWeekend ? 1.2 : 1;
 
-    const price = participants * courses  * eventMultiplier * weekendMultiplier;
+    var price = participants * courses  * eventMultiplier * weekendMultiplier;
 
     // Verifica se il prezzo calcolato è valido
     if (price <= 0 || isNaN(price)) {
@@ -227,6 +229,8 @@
 		price
     };
 	
+	console.log(templateParams);
+	
 	emailjs.send("service_s509dyk", "template_eyb4zav", templateParams)
 	.then(function(response) {
 		console.log("SUCCESS!", response.status, response.text);
@@ -236,12 +240,13 @@
 		alert("Si è verificato un errore durante l'invio del preventivo.");
 	});
 	
+	
 
     // Nascondi il modulo e mostra il risultato
     document.getElementById('quoteForm').style.display = 'none';
     const resultContainer = document.getElementById('resultContainer');
     const resultText = document.getElementById('resultText');
-    resultText.innerHTML = `Il costo stimato per il tuo evento è: <strong>€${price.toFixed(2)}</strong>`;
+    resultText.innerHTML = `Il costo stimato per il tuo evento è: <strong>€${price.toFixed(0)}</strong> a persona`;
 
     if (contactPreference === 'email' || contactPreference === 'telefonata') {
         resultText.innerHTML += '<br>Verrai ricontattato al più presto.';

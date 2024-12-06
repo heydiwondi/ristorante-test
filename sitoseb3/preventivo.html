@@ -182,7 +182,7 @@
     //    return; // Interrompe l'invio del modulo se i dati sono errati
    // }
    
-   participants = 1; //Messo per stampare il prezzo a persona
+
 	
 
     // Calcolo del preventivo
@@ -208,8 +208,10 @@
 
     const isWeekend = ['Saturday', 'Sunday'].includes(new Date(eventDate).toLocaleDateString('en-US', { weekday: 'long' }));
     const weekendMultiplier = isWeekend ? 1.2 : 1;
+	
+	//Tolto partecipants per fare prezzo a persona
 
-    var price = participants * courses  * eventMultiplier * weekendMultiplier;
+    var price = courses  * eventMultiplier * weekendMultiplier;
 
     // Verifica se il prezzo calcolato è valido
     if (price <= 0 || isNaN(price)) {

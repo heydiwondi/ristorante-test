@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> Rosso Cenere</title>
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+		<link rel="stylesheet" href="stile.css"/>
+		<!-- AOS CSS -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+		
+		<!-- Stile Personalizzato -->
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-dark bg-dark fixed-top">
+			<div class="container">
+				<!-- Brand -->
+				<a class="navbar-brand" href="#hero"> Rosso Cenere</a>
+				
+				<!-- Menu normale per desktop -->
+				<ul class="navbar-nav d-none d-lg-flex flex-row">
+					<li class="nav-item">
+						<a class="nav-link text-white px-3" href="#about">Chi Siamo</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white px-3" href="#our-kitchen">La Nostra Cucina</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white px-3" href="Menu_Dicembre_2024.pdf" target="_blank">Menu</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white px-3" href="#contatti">Contatti</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white px-3" href="#design-works">Interior Design</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white px-3" href="#private-events">Eventi Privati</a>
+					</li>
+				</ul>
+				
+				<!-- Hamburger per mobile -->
+				<button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+		</nav>
+		
+		<!-- Offcanvas Menu per dispositivi mobili -->
+		<div class="offcanvas offcanvas-end bg-dark custom-bg text-white d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			</div>
+			<div class="offcanvas-body d-flex flex-column align-items-center justify-content-center">
+				<img src="logotest.png" alt="Logo Ristorante Rosso Cenere" class="mb-4" style="width: 120px; height: auto;">
+				<ul class="navbar-nav text-center">
+					<li class="nav-item">
+						<a class="nav-link text-white" href="#hero">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white" href="#about">Chi Siamo</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white" href="#our-kitchen">La nostra cucina</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white" href="Menu_Dicembre_2024.pdf" target="_blank" >Menu</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white" href="#contatti">Contatti</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white" href="#design-works">Interior Design</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white" href="#private-events">Eventi Privati</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		
+		<!-- Hero Section -->
+		<header class="hero" id="hero">
+			<div data-aos="fade-up" >
+				<h1>Ristorante Rosso Cenere</h1>
+				<p>Un viaggio tra sapori autentici</p>
+				<a href="Menu_Dicembre_2024.pdf" class="btn btn-danger btn-lg" target="_blank">Scopri il Menu</a>
+				
+			</div>
+		</header>
+		
+		<!-- Chi Siamo -->
+		<section class="about" id="about" >
+			<div class="container">
+				<div class="row align-items-center">
+					<!-- Testo -->
+					<div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-left"  >
+						<h2>Chi Siamo</h2>
+						<p class="lead">Al <strong>Ristorante Rosso Cenere</strong>, ogni piatto è un'esperienza unica. Coniughiamo tradizione e innovazione per offrirti un viaggio tra i sapori autentici della nostra terra.</p>
+						<p>La nostra passione per la cucina si riflette in ogni dettaglio: ingredienti selezionati, tecniche innovative e l'amore per il buon cibo.</p>
+						<a href="Menu_Dicembre_2024.pdf" class="btn btn-outline-danger" target="_blank">Scopri il nostro menu</a>
+					</div>
+					<!-- Immagine -->
+					<div class="col-lg-6" data-aos="fade-right"  >
+						<img src="prova_chisiamo.jpg" alt="Chef del ristorante" class="img-fluid rounded shadow">
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- La nostra cucina -->
+		<section class="our-kitchen py-5" id="our-kitchen">
+			<div class="container d-flex flex-column flex-lg-row align-items-center">
+				<!-- Foto a sinistra con margine destro -->
+				<div class="col-lg-6 mb-4 mb-lg-0 pe-lg-5" data-aos="fade-right"   >
+					<img src="prova_nostracucina.jpg" alt="La nostra cucina" class="img-fluid rounded">
+				</div>
+				
+				<!-- Testo a destra con margine sinistro -->
+				<div class="col-lg-6 text-center text-lg-start" data-aos="fade-left"   >
+					<h2 class="text-white mb-4">La nostra cucina</h2>
+					<p class="text-white">
+						Il nostro ristorante è un omaggio alla tradizione culinaria umbra, con un'attenzione particolare alla qualità e alla freschezza dei nostri ingredienti. 
+						Utilizziamo esclusivamente prodotti nostrani, selezionati con cura da fornitori locali e provenienti da coltivazioni a km 0, per garantire piatti dal sapore autentico e genuino. 
+						Ogni preparazione è realizzata con passione, per offrirvi un'esperienza che celebra la cucina umbra e la sua storia gastronomica.
+					</p>
+				</div>
+			</div>
+		</section>
+		
+		<section id="slideshow" class="carousel-section py-5">
+			<div class="container">
+				<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+					<!-- Indicatori sotto le immagini -->
+					<div class="carousel-indicators justify-content-center">
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+					</div>
+					
+					<div class="carousel-inner" data-aos="fade-up" >
+						<div class="carousel-item active">
+							<div class="row">
+								<div class="col-md-4">
+									<img src="images\slideshow1.jpg" class="d-block w-100 rounded" alt="Piatto 1">
+									<p class="text-center text-white mt-2">Descrizione del Piatto 1</p>
+								</div>
+								<div class="col-md-4">
+									<img src="images\slideshow2.jpg" class="d-block w-100 rounded" alt="Piatto 2">
+									<p class="text-center text-white mt-2">Descrizione del Piatto 2</p>
+								</div>
+								<div class="col-md-4">
+									<img src="images\slideshow3.png" class="d-block w-100 rounded" alt="Piatto 3">
+									<p class="text-center text-white mt-2">Descrizione del Piatto 3</p>
+								</div>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<div class="row">
+								<div class="col-md-4">
+									<img src="images\slideshow2.jpg" class="d-block w-100 rounded" alt="Piatto 4">
+									<p class="text-center text-white mt-2">Descrizione del Piatto 4</p>
+								</div>
+								<div class="col-md-4">
+									<img src="images\slideshow3.png" class="d-block w-100 rounded" alt="Piatto 5">
+									<p class="text-center text-white mt-2">Descrizione del Piatto 5</p>
+								</div>
+								<div class="col-md-4">
+									<img src="images\slideshow1.jpg" class="d-block w-100 rounded" alt="Piatto 6">
+									<p class="text-center text-white mt-2">Descrizione del Piatto 6</p>
+								</div>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<div class="row">
+								<div class="col-md-4">
+									<img src="images\slideshow3.png" class="d-block w-100 rounded" alt="Piatto 7">
+									<p class="text-center text-white mt-2">Descrizione del Piatto 7</p>
+								</div>
+								<div class="col-md-4">
+									<img src="images\slideshow2.jpg" class="d-block w-100 rounded" alt="Piatto 8">
+									<p class="text-center text-white mt-2">Descrizione del Piatto 8</p>
+								</div>
+								<div class="col-md-4">
+									<img src="images\slideshow1.jpg" class="d-block w-100 rounded" alt="Piatto 9">
+									<p class="text-center text-white mt-2">Descrizione del Piatto 9</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+			</div>
+		</section>
+		
+		<section id="contatti"  class="info-section">
+			<div class="container">
+				<div class="row align-items-center">
+					
+					<div class="col-lg-6 text-center text-lg-start info-container" data-aos="fade-right" >
+						<h2>Orari</h2>
+						<p>
+							<strong>Pranzo:</strong> Siamo aperti dal giovedì alla domenica, dalle ore 12:00 alle 14:30.<br>
+							Durante la settimana accettiamo prenotazioni per pranzi di gruppo o eventi privati.
+						</p>
+						<p>
+							<strong>Cena:</strong> Siamo aperti dal mercoledì alla domenica, dalle ore 19:30 alle 22:30.
+						</p>
+						<h2>Dove trovarci</h2>
+						<p>Via Valle di Assisi 123</p>
+						<h2>Come contattarci</h2>
+						<p>
+							<a href="mailto:info@rossocenere.com">info@rossocenere.com</a><br>
+							<a href="tel:+39075236782">+39 075236782</a>
+						</p>
+					</div>
+					<div class="map-container col-lg-6" data-aos="fade-left" >
+						<div id="map"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- La nostra cucina -->
+		<section id="design-works" class="py-5" style="background-color: #111111;">
+			<div class="container d-flex flex-column flex-lg-row align-items-center">
+				<!-- Foto a sinistra con margine destro -->
+				<div class="col-lg-6 mb-4 mb-lg-0 pe-lg-5" data-aos="fade-left" >
+					<img src="opera.png" alt="Le opere di design" class="img-fluid rounded">
+				</div>
+				
+				<!-- Testo a destra con margine sinistro -->
+				<div class="col-lg-6 text-center text-lg-start" data-aos="fade-right" >
+					<h2 class="mb-4">Le Opere di Design</h2>
+				<p class="lead">
+				  Nel nostro ristorante potrai ammirare le opere di design create da <strong>Andrea de Carvalho</strong>, 
+				  artista di fama internazionale. Le sue creazioni polimateriche combinano ferro, ceramica, 
+				  pittura e oggetti trovati, trasformando l'ambiente in un'esperienza artistica unica.
+				</p>
+				<p>
+				  Esplora il catalogo completo delle sue opere, presente nel ristorante, e lasciati ispirare
+				  dalla sua maestria nel catturare la bellezza della trasformazione.
+				</p>
+				<a href="catalogo_adc.pdf" target="_blank" class="btn btn-outline-light">Sfoglia il Catalogo</a>
+				</div>
+			</div>
+		</section>
+		
+		<section id="private-events" class="py-5" style="background-color: #2a2c2b;">
+		  <div class="container text-light">
+			<div class="row align-items-center">
+			  <!-- Testo -->
+			  <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right" >
+				<h2 class="mb-4">Eventi Privati</h2>
+				<p class="lead">
+				  Organizziamo eventi di ogni dimensione, personalizzati per soddisfare le esigenze dei nostri clienti. 
+				  La nostra saletta privata è disponibile per gruppi fino a 14 persone, 
+				  mentre l’intero ristorante può essere riservato per cene, pranzi placée o aperitivi rinforzati.
+				</p>
+				<p>
+				  Proponiamo anche servizi di catering esterni, studiando soluzioni che rispecchino la nostra 
+				  filosofia e trasmettano la passione che mettiamo nel nostro lavoro.
+				</p>
+				 <!-- <a href="preventivo.html" class="btn btn-outline-light mt-3">Calcola preventivo online</a> -->
+				<a href="#" class="btn btn-outline-light mt-3" onclick="window.open('preventivo.html', '_blank', 'width=800,height=600'); return false;">Calcola preventivo online</a>
+
+			  </div>
+			  
+			  <!-- Immagine -->
+			  <div class="col-lg-6" data-aos="fade-left" >
+				<img src="catering.jpeg" alt="Eventi Privati al Ristorante" class="img-fluid rounded shadow">
+			  </div>
+			</div>
+		  </div>
+		</section>
+
+		
+	
+		
+		<a href="https://wa.me/393312898996?text=Buonasera%20vorrei%20riservare%20un%20tavolo..." target="_blank" class="whatsapp-float">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+		</a>
+		
+		<!-- Footer -->
+		<footer class="footer">
+			<div class="container">
+				<p>&copy
+				; 2024 Ristorante Rosso Cenere. Tutti i diritti riservati.</p>
+			</div>
+		</footer>
+		
+		<!-- Bootstrap JS -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const offcanvasMenu = document.getElementById('offcanvasNavbar');
+				const menuLinks = offcanvasMenu.querySelectorAll('.nav-link');
+				
+				menuLinks.forEach(link => {
+					link.addEventListener('click', () => {
+						const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasMenu);
+						if (offcanvas) {
+							offcanvas.hide(); // Chiude il menu offcanvas
+						}
+					});
+				});
+			});
+			
+			document.addEventListener('DOMContentLoaded', () => {
+				const navbarHeight = document.querySelector('.navbar').offsetHeight;
+				document.querySelectorAll('a.nav-link').forEach(link => {
+					link.addEventListener('click', (e) => {
+						const targetId = link.getAttribute('href');
+						if (targetId.startsWith('#')) {
+							e.preventDefault();
+							const targetElement = document.querySelector(targetId);
+							if (targetElement) {
+								const targetPosition = targetElement.offsetTop - navbarHeight;
+								window.scrollTo({
+									top: targetPosition,
+									behavior: 'smooth'
+								});
+							}
+						}
+					});
+				});
+			});
+			
+			// Inizializza la mappa
+			var map = L.map('map', { zoomSnap: 0.5 }).setView([43.094301, 12.616888], 12.5);
+			
+			// Aggiungi il layer di OpenStreetMap
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				maxZoom: 20,
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			}).addTo(map);
+			
+			// Aggiungi un marker per il ristorante
+			var marker = L.marker([43.094301, 12.616888]).addTo(map);
+			marker.bindPopup("<b>Ristorante Rosso Cenere</b><br>Assisi, Italia").openPopup();
+			
+			document.addEventListener('DOMContentLoaded', function () {
+				AOS.init({
+					duration: 1000, // Durata dell'animazione in millisecondi
+					easing: 'ease-in-out', // Transizione fluida
+					once: true, // L'animazione avviene solo una volta
+				});
+			});
+			
+			
+		</script>
+
+	</body>
+</html>

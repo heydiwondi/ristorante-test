@@ -1,6 +1,8 @@
 body {
 	font-family: Arial, sans-serif;
 	line-height: 1.6;
+	
+	
 }
 
 /* Navbar Personalizzata */
@@ -365,3 +367,11 @@ body {
         margin-bottom: 20px;
     }
 }
+
+AOS.init({
+    offset: 100, // Riduce la distanza di attivazione dell'animazione
+    duration: 800, // Durata più breve
+    easing: 'ease-in-out', // Easing fluido
+    once: true, // L'animazione avviene solo una volta
+    anchorPlacement: 'top-bottom', // Attiva l'animazione quando l'elemento entra nel viewport
+});

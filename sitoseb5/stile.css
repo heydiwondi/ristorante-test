@@ -129,8 +129,8 @@ body {
 
 @media (max-width: 600px) {
 	.hero {
-  	background: url('images/sala2.jpeg') center/cover no-repeat;
-	/*background: url('images/istenda.jpeg') center/cover no-repeat;*/
+	/*background: url('images/sala2.jpeg') center/cover no-repeat;*/
+	background: url('images/istenda.jpeg') center/cover no-repeat;
 	height: 100vh;
 	color: white;
 	display: flex;
@@ -142,8 +142,8 @@ body {
 
 @media (max-width: 448px) {
 	.hero {
-	background: url('images/sala4.jpeg') center/cover no-repeat;
-	/*background: url('images/istenda.jpeg') center/cover no-repeat;*/
+	/*background: url('images/sala4.jpeg') center/cover no-repeat;*/
+	background: url('images/istenda.jpeg') center/cover no-repeat;
 	height: 100vh;
 	color: white;
 	display: flex;

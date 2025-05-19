@@ -105,11 +105,11 @@
             <div class="mb-3">
                 <label for="courses" class="form-label">Numero di portate</label>
                  <select id="courses" class="form-select" required>
-                    <option value="35">3 Seduti</option>
+                    <option value="40">3 Seduti</option>
                     <option value="45">4 Seduti</option>
-                    <option value="50">Buffet + 2 seduti</option>
-                    <option value="60">Buffet + 3 seduti</option>
-                    <option value="40">Tutto Buffet</option>
+                    <option value="70">Buffet + 2 seduti</option>
+                    <option value="80">Buffet + 3 seduti</option>
+                    <option value="55">Tutto Buffet</option>
                 </select>
             </div>
             <div class="mb-3">
@@ -177,10 +177,10 @@
     }
 	
     // Verifica se i valori sono validi
-    //if (!eventDate || isNaN(participants) || participants < 5 || isNaN(courses) || courses < 4 || courses > 20) {
-    //    alert("Per favore, inserisci almeno 5 partecipanti e compila correttamente tutti i campi.");
-    //    return; // Interrompe l'invio del modulo se i dati sono errati
-   // }
+    if (!eventDate || isNaN(participants) || participants < 5 || isNaN(courses) || courses <15  || courses > 80) {
+        alert("Per favore, compila correttamente tutti i campi.");
+        return; // Interrompe l'invio del modulo se i dati sono errati
+    }
    
 
 	
@@ -191,26 +191,26 @@
 
     switch (eventType) {
         case 'matrimonio':
-            eventMultiplier = 1.5;
+            eventMultiplier = 1.4;
             break;
         case 'battesimo':
         case 'comunione':
-            eventMultiplier = 1.2;
+		case 'cresima':
+            eventMultiplier = 1.1;
             break;
-        case 'cresima':
         case 'festa privata':
         case 'compleanno':
-            eventMultiplier = 1.1;
+            eventMultiplier = 1;
             break;
         default:
             eventMultiplier = 1;
     }
 
     const isWeekend = ['Saturday', 'Sunday'].includes(new Date(eventDate).toLocaleDateString('en-US', { weekday: 'long' }));
-    const weekendMultiplier = isWeekend ? 1.2 : 1;
+    const weekendMultiplier = isWeekend ? 1.1 : 1;
 	
 	//Tolto partecipants per fare prezzo a persona
-
+    // venerdi sera sabato sera domenica pranzo deve essere aggiungo pranzocena
     var price = courses  * eventMultiplier * weekendMultiplier;
 
     // Verifica se il prezzo calcolato è valido

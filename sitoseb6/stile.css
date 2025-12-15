@@ -191,6 +191,7 @@ h6,
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+	background-color: rgba(0, 0, 0, 0.29);
 }
 
 #hero::before {
@@ -574,4 +575,5 @@ h6,
 		width: 80%;
 		max-width: 200px;
 	}
+
 }

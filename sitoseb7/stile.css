@@ -4,14 +4,28 @@ html {
 	background-color: #111111;
 }
 
+
+@font-face {
+    font-family: 'Glacial Indifference';
+    src: url('fonts/GlacialIndifference-Regular.otf') format('opentype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Glacial Indifference';
+    src: url('fonts/GlacialIndifference-Bold.otf') format('opentype');
+    font-weight: bold;
+}
+
 body {
-	font-family: 'Lora', serif;
+	font-family: 'Glacial Indifference', sans-serif;
 	line-height: 1.6;
 	overflow-x: hidden;
 	background-color: #111111;
 	/* Uniform dark background */
 	margin: 0;
 }
+
 
 h1,
 h2,

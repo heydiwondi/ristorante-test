@@ -196,8 +196,8 @@ h6,
 }
 
 /* Hero Section */
+/*
 .hero {
-	/*background: url('images/sala3.jpeg') center/cover no-repeat;*/
 	background: url('images/istenda.webp') center/cover no-repeat;
 	height: 100vh;
 	color: white;
@@ -207,46 +207,136 @@ h6,
 	text-align: center;
 	background-color: rgba(0, 0, 0, 0.29);
 }
+*/
+
+/*
+@media (max-width: 600px) {
+	.hero {
+		background: url('images/istenda.webp') center/cover no-repeat;
+		height: 100vh;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+}
+
+*/
+
+
+.hero {
+		background: url('images/istenda_480.webp') center/cover no-repeat;
+		height: 100vh;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+
+@media (min-width: 481px) {
+	.hero {
+		background: url('images/istenda_600.webp') center/cover no-repeat;
+		height: 100vh;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+}
+
+@media (min-width: 600px) {
+	.hero {
+		background: url('images/istenda_768.webp') center/cover no-repeat;
+		height: 100vh;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.29);
+	}
+}
+
+@media (min-width: 768px) {
+	.hero {
+		background: url('images/istenda_1024.webp') center/cover no-repeat;
+		height: 100vh;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.29);
+	}
+}
+
+@media (min-width: 1024px) {
+	.hero {
+		background: url('images/istenda_1440.webp') center/cover no-repeat;
+		height: 100vh;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.29);
+	}
+}
+
+@media (min-width: 1440px) {
+	.hero {
+		background: url('images/istenda_1920.webp') center/cover no-repeat;
+		height: 100vh;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.29);
+	}
+}
+
+@media (min-width: 1920px) {
+	.hero {
+		background: url('images/istenda_2560.webp') center/cover no-repeat;
+		height: 100vh;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.29);
+	}
+}
+
+@media (min-width: 2560px) {
+	.hero {
+		background: url('images/istenda.webp') center/cover no-repeat;
+		height: 100vh;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.29);
+	}
+}
+
 
 #hero::before {
 	content: "";
 	position: absolute;
 	inset: 0;
 	background-color: rgba(0, 0, 0, 0.29);
-	/* o qualsiasi colore per scurire / sfumare */
 	z-index: 2;
 }
 
 .hero-content {
 	position: relative;
 	z-index: 3;
-	/* sopra l’overlay */
-}
-
-@media (max-width: 600px) {
-	.hero {
-		/*background: url('images/sala2.jpeg') center/cover no-repeat;*/
-		background: url('images/istenda.webp') center/cover no-repeat;
-		height: 100vh;
-		color: white;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-	}
-}
-
-@media (max-width: 448px) {
-	.hero {
-		/*background: url('images/sala4.jpeg') center/cover no-repeat;*/
-		background: url('images/istenda.webp') center/cover no-repeat;
-		height: 100vh;
-		color: white;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-	}
 }
 
 

@@ -198,7 +198,7 @@ h6,
 /* Hero Section */
 .hero {
 	/*background: url('images/sala3.jpeg') center/cover no-repeat;*/
-	background: url('images/istenda.jpeg') center/cover no-repeat;
+	background: url('images/istenda.webp') center/cover no-repeat;
 	height: 100vh;
 	color: white;
 	display: flex;
@@ -226,7 +226,7 @@ h6,
 @media (max-width: 600px) {
 	.hero {
 		/*background: url('images/sala2.jpeg') center/cover no-repeat;*/
-		background: url('images/istenda.jpeg') center/cover no-repeat;
+		background: url('images/istenda.webp') center/cover no-repeat;
 		height: 100vh;
 		color: white;
 		display: flex;
@@ -239,7 +239,7 @@ h6,
 @media (max-width: 448px) {
 	.hero {
 		/*background: url('images/sala4.jpeg') center/cover no-repeat;*/
-		background: url('images/istenda.jpeg') center/cover no-repeat;
+		background: url('images/istenda.webp') center/cover no-repeat;
 		height: 100vh;
 		color: white;
 		display: flex;
